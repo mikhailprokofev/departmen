@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('description');
             
             // Инструкция (privateAPI)
-            $table->string('job_description')->nullable();
+            $table->string('job_description')->nullable(true);
             // Базовый оклад (privateAPI)
-            $table->string('base_salary')->nullable();
+            $table->integer('base_salary')->nullable(true);
         });
     }
 

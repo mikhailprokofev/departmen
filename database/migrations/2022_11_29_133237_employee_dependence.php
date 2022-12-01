@@ -17,12 +17,12 @@ return new class extends Migration
             // Должность (publicAPI)
             $table->foreignId('job_titles_id')
                 ->constrained()
-                    ->nullable();
+                    ->nullable(true);
             
             // Отдел (publicAPI)
             $table->foreignId('departments_id')
                 ->constrained()
-                    ->nullable();
+                    ->nullable(true);
         });
     }
 

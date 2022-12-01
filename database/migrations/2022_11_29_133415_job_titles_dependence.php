@@ -18,7 +18,7 @@ return new class extends Migration
             // Отдел (publicAPI)
             $table->foreignId('departments_id')
                 ->constrained()
-                    ->nullable();
+                    ->nullable(true);
         });
     }
 
