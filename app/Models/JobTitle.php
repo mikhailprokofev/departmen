@@ -56,18 +56,6 @@ class JobTitle extends Model
     /**
      * Атрибуты, которые должны быть типизированы.
      *
-     * @var string
-     */
-    public function departmentTitle()
-    {
-        return DB::table('departments')
-            ->where('id', '=', $this->department_id)
-                ->get('title');
-    }
-
-    /**
-     * Атрибуты, которые должны быть типизированы.
-     *
      * @var array
      */
     public function employee()

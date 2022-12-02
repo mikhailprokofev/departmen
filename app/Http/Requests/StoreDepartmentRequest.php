@@ -28,4 +28,17 @@ class StoreDepartmentRequest extends FormRequest
             'description' => ['string', 'max:1000'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => 'A title is required',
+            'description.required' => 'A description is required',
+        ];
+    }
 }

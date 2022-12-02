@@ -23,8 +23,14 @@ class DepartmentResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'jobTitlesTitles' => JobTitleResource::collection($this->jobTitle)
+                ->map(function ($item) {
+                    return $item->title;
+                }),
             $this->mergeWhen(!empty(Auth::user()), [
-                'jobTitles' => JobTitleResource::collection($this->jobTitle),
+                'jobTitles' => JobTitleResource::collection(
+                    $this->whenLoaded('jobTitle')
+                ),
                 'employee' => EmployeeResource::collection($this->employee),
                 'numberOfEmployee' => 
                     EmployeeResource::collection(

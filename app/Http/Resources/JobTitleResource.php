@@ -23,7 +23,7 @@ class JobTitleResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'department' => $this->department,
+            'department' => $this->department->title ?? '',
             $this->mergeWhen(!empty(Auth::user()), [
                 'job_description' => $this->job_description,
                 'base_salary' => $this->base_salary,

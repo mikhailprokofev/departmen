@@ -22,6 +22,8 @@ class EmployeeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'jobTitle' => $this->jobTitle->title ?? '',
+            'department' => $this->department->title ?? '',
             'email' => $this->email,
             $this->mergeWhen(!empty(Auth::user()), [
                 'age' => $this->age,
@@ -29,8 +31,6 @@ class EmployeeResource extends JsonResource
                 'adress' => $this->adress,
                 'experience' => $this->experience,
                 'phone' => $this->phone,
-                'jobTitles' => $this->jobTitle,
-                'department' => $this->department,
             ]),
         ];
     }
