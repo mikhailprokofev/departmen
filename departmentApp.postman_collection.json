@@ -186,19 +186,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/department/?page=1",
+							"raw": "{{url}}/department/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"department",
 								""
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -224,12 +218,12 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Department",
+									"value": "Department0",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Отдел разработки Программного обеспечения",
+									"value": "Отдел",
 									"type": "text"
 								}
 							]
@@ -352,16 +346,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{token}}",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -431,7 +415,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Должность",
+									"value": "Должность0",
 									"type": "text"
 								},
 								{
@@ -452,8 +436,8 @@
 									"type": "text"
 								},
 								{
-									"key": "departments_id",
-									"value": "1",
+									"key": "department_id",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -586,16 +570,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{token}}",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -626,7 +600,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/employee/?page=1",
+							"raw": "{{url}}/employee/",
 							"host": [
 								"{{url}}"
 							],
@@ -637,7 +611,8 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								}
 							]
 						}
@@ -647,29 +622,54 @@
 				{
 					"name": "Create",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "title",
-									"value": "Department",
+									"key": "name",
+									"value": "Сотрудник3",
 									"type": "text"
 								},
 								{
-									"key": "description",
-									"value": "Отдел разработки Программного обеспечения",
+									"key": "email",
+									"value": "mail3@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "Lenina 20, kv 10",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "88000000000",
+									"type": "text"
+								},
+								{
+									"key": "job_title_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "department_id",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -766,16 +766,6 @@
 				{
 					"name": "Delete Copy",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -792,16 +782,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{token}}",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -824,6 +804,16 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
