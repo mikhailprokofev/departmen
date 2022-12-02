@@ -27,7 +27,13 @@ class JobTitleResource extends JsonResource
             $this->mergeWhen(!empty(Auth::user()), [
                 'job_description' => $this->job_description,
                 'base_salary' => $this->base_salary,
-                'employee' => EmployeeResource::collection($this->employee),
+                'employee' => EmployeeResource::collection($this->employee)
+                ->map(function ($item) {
+                    return [
+                        'name' => $item->name,
+                        'email' => $item->email,
+                    ];
+                }),
                 'numberOfEmployee' => 
                     EmployeeResource::collection(
                         $this->whenLoaded('employee')

@@ -31,7 +31,12 @@ class DepartmentResource extends JsonResource
                 'jobTitles' => JobTitleResource::collection(
                     $this->whenLoaded('jobTitle')
                 ),
-                'employee' => EmployeeResource::collection($this->employee),
+                'employee' => EmployeeResource::collection($this->employee)->map(function ($item) {
+                    return [
+                        'name' => $item->name,
+                        'email' => $item->email,
+                    ];
+                }),
                 'numberOfEmployee' => 
                     EmployeeResource::collection(
                         $this->whenLoaded('employee')
