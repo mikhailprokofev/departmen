@@ -24,7 +24,15 @@ class UpdateEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['string', 'max:120','nullable'],
+            'email' => ['string', 'max:120','unique:employees','nullable'],
+            'age' => ['integer','nullable'],
+            'salary' => ['integer', 'nullable'],
+            'adress' => ['string', 'max:120','nullable'],
+            'experience' => ['string', 'max:120','nullable'],
+            'phone' => ['string', 'max:120','nullable'],
+            'job_title_id' => ['nullable'],
+            'department_id' => ['nullable'],
         ];
     }
 }

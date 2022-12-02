@@ -6,6 +6,9 @@ use App\Http\Requests\StoreJobTitleRequest;
 use App\Http\Requests\UpdateJobTitleRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JobTitle;
+use App\Http\Resources\JobTitleResource;
+
+use Illuminate\Support\Facades\Log;
 
 class JobTitleController extends Controller
 {
@@ -16,8 +19,9 @@ class JobTitleController extends Controller
      */
     public function index()
     {
-        return JobTitle::orderByDesc('id')->paginate(20);
-        // return JobTitle::orderByDesc('id')->simplePaginate(20);
+        return JobTitleResource::collection(
+            JobTitle::orderBy('id')->paginate(20)
+        );
     }
 
     /**
@@ -29,7 +33,9 @@ class JobTitleController extends Controller
     public function store(StoreJobTitleRequest $request)
     {
         $validated = $request->validated();
+        Log::info($validated);
         $jobtitle = JobTitle::create($validated);
+        // Log::info($jobtitle->department());
         return redirect()->route('jobtitle.show', $jobtitle);
     }
 
@@ -41,7 +47,7 @@ class JobTitleController extends Controller
      */
     public function show(JobTitle $jobTitle)
     {
-        return $jobTitle;
+        return new JobTitleResource($jobTitle);
     }
 
     /**

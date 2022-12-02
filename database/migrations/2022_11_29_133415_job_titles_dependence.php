@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::table('job_titles', function (Blueprint $table) {
         
             // Отдел (publicAPI)
-            $table->foreignId('departments_id')
-                ->constrained()
-                    ->nullable(true);
+            $table->foreignId('department_id')
+                ->nullable(true)
+                    ->constrained();
         });
     }
 
@@ -30,7 +30,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropForeign('departments_id');
+            $table->dropForeign('department_id');
         });
     }
 };

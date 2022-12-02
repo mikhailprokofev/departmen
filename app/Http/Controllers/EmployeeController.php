@@ -6,6 +6,9 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Employee;
+use App\Http\Resources\EmployeeResource;
+
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
@@ -16,8 +19,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::orderByDesc('id')->paginate(20);
-        // return Employee::orderByDesc('id')->simplePaginate(20);
+        return EmployeeResource::collection(
+            Employee::orderBy('id')->paginate(20)
+        );
     }
 
     /**
@@ -41,7 +45,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        return $employee;
+        return new EmployeeResource($employee);
     }
 
     /**

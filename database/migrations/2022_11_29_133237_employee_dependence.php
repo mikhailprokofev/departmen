@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             // Должность (publicAPI)
-            $table->foreignId('job_titles_id')
-                ->constrained()
-                    ->nullable(true);
+            $table->foreignId('job_title_id')
+                ->nullable(true)
+                    ->constrained();
             
             // Отдел (publicAPI)
-            $table->foreignId('departments_id')
-                ->constrained()
-                    ->nullable(true);
+            $table->foreignId('department_id')
+                ->nullable(true)
+                    ->constrained();
         });
     }
 
@@ -34,8 +34,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropForeign('job_titles_id');
-            $table->dropForeign('departments_id');
+            $table->dropForeign('job_title_id');
+            $table->dropForeign('department_id');
         });
     }
 };

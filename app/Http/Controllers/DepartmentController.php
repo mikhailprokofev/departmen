@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
+use App\Http\Resources\DepartmentResource;
 
 use Illuminate\Support\Facades\Log;
 
@@ -18,8 +19,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::orderByDesc('id')->paginate(20);
-        // return Department::orderByDesc('id')->simplePaginate(20);
+        return DepartmentResource::collection(
+            Department::orderBy('id')->paginate(20)
+        );
     }
 
     /**
@@ -43,7 +45,8 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        return $department;
+        // return $department;
+        return new DepartmentResource($department);
     }
 
     /**

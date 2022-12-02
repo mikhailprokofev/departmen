@@ -27,8 +27,8 @@ class StoreJobTitleRequest extends FormRequest
             'title' => ['string', 'max:120', 'unique:job_titles'],
             'description' => ['string', 'max:1000'],
             'job_description' => ['string', 'max:1000', 'nullable'],
-            'base_salary' => ['integer'],
-            'departments_id' => ['nullable']
+            'base_salary' => ['integer', 'nullable'],
+            'department_id' => ['nullable']
         ];
     }
 }

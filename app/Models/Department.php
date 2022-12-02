@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\JobTitles;
+use App\Models\JobTitle;
 use App\Models\Employee;
 
 class Department extends Model
@@ -28,8 +28,32 @@ class Department extends Model
         'description',
     ];
 
-    public function jobTitles()
+    /**
+     * Атрибуты, которые должны быть типизированы.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'options' => 'array',
+    ];
+
+    /**
+     * Атрибуты, которые должны быть типизированы.
+     *
+     * @var array
+     */
+    public function jobTitle()
     {
-        return $this->hasMany(JobTitles::class);
+        return $this->hasMany(JobTitle::class);
+    }
+
+    /**
+     * Атрибуты, которые должны быть типизированы.
+     *
+     * @var array
+     */
+    public function employee()
+    {
+        return $this->hasMany(Employee::class);
     }
 }

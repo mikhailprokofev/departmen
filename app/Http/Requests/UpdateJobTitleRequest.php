@@ -24,7 +24,11 @@ class UpdateJobTitleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['string', 'max:120', 'unique:job_titles', 'nullable'],
+            'description' => ['string', 'max:1000', 'nullable'],
+            'job_description' => ['string', 'max:1000', 'nullable'],
+            'base_salary' => ['integer', 'nullable'],
+            'department_id' => ['nullable']
         ];
     }
 }

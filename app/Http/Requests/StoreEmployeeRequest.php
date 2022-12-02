@@ -24,7 +24,15 @@ class StoreEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['string', 'max:120'],
+            'email' => ['string', 'max:120','unique:employees'],
+            'age' => ['integer'],
+            'salary' => ['integer', 'nullable'],
+            'adress' => ['string', 'max:120'],
+            'experience' => ['string', 'max:120'],
+            'phone' => ['string', 'max:120'],
+            'job_title_id' => ['nullable'],
+            'department_id' => ['nullable'],
         ];
     }
 }
