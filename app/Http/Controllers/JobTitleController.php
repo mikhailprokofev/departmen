@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\JobTitle;
 use App\Http\Resources\JobTitleResource;
 
-use Illuminate\Support\Facades\Log;
-
 class JobTitleController extends Controller
 {
     /**
@@ -34,7 +32,6 @@ class JobTitleController extends Controller
     {
         $validated = $request->validated();
         $jobtitle = JobTitle::create($validated);
-        Log::info($jobtitle);
         return redirect()->route('jobtitle.show', $jobtitle);
     }
 
@@ -46,7 +43,6 @@ class JobTitleController extends Controller
      */
     public function show(JobTitle $jobtitle)
     {
-        Log::info($jobtitle);
         return new JobTitleResource($jobtitle);
     }
 
