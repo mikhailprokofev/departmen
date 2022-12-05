@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdateJobTitleRequest extends FormRequest
 {
     /**
+     * Остановить валидацию после первой неуспешной проверки.
+     *
+     * @var bool
+     */
+    protected $stopOnFirstFailure = true;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool

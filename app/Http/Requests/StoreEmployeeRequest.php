@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreEmployeeRequest extends FormRequest
 {
     /**
+     * Остановить валидацию после первой неуспешной проверки.
+     *
+     * @var bool
+     */
+    protected $stopOnFirstFailure = true;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -24,13 +31,13 @@ class StoreEmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'max:120'],
-            'email' => ['string', 'max:120','unique:employees'],
-            'age' => ['integer'],
+            'name' => ['required', 'string', 'max:120'],
+            'email' => ['required', 'string', 'max:120','unique:employees'],
+            'age' => ['required', 'integer'],
             'salary' => ['integer', 'nullable'],
-            'adress' => ['string', 'max:120'],
-            'experience' => ['string', 'max:120'],
-            'phone' => ['string', 'max:120'],
+            'adress' => ['required', 'string', 'max:120'],
+            'experience' => ['required', 'string', 'max:120'],
+            'phone' => ['required', 'string', 'max:120'],
             'job_title_id' => ['nullable'],
             'department_id' => ['nullable'],
         ];

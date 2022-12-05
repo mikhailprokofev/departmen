@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreJobTitleRequest extends FormRequest
 {
     /**
+     * Остановить валидацию после первой неуспешной проверки.
+     *
+     * @var bool
+     */
+    protected $stopOnFirstFailure = true;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -24,10 +31,10 @@ class StoreJobTitleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['string', 'max:120', 'unique:job_titles'],
-            'description' => ['string', 'max:1000'],
-            'job_description' => ['string', 'max:1000', 'nullable'],
-            'base_salary' => ['integer', 'nullable'],
+            'title' => ['required', 'string', 'max:120', 'unique:job_titles'],
+            'description' => ['required', 'string', 'max:1000'],
+            'job_description' => ['required', 'string', 'max:1000', 'nullable'],
+            'base_salary' => ['required', 'integer', 'nullable'],
             'department_id' => ['nullable']
         ];
     }

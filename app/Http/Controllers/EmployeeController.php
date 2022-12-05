@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Employee;
 use App\Http\Resources\EmployeeResource;
 
-use Illuminate\Support\Facades\Log;
-
 class EmployeeController extends Controller
 {
     /**

@@ -33,48 +33,48 @@ class JobTitleController extends Controller
     public function store(StoreJobTitleRequest $request)
     {
         $validated = $request->validated();
-        Log::info($validated);
         $jobtitle = JobTitle::create($validated);
-        // Log::info($jobtitle->department());
+        Log::info($jobtitle);
         return redirect()->route('jobtitle.show', $jobtitle);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\JobTitle  $jobtitle
      * @return \Illuminate\Http\Response
      */
-    public function show(JobTitle $jobTitle)
+    public function show(JobTitle $jobtitle)
     {
-        return new JobTitleResource($jobTitle);
+        Log::info($jobtitle);
+        return new JobTitleResource($jobtitle);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateJobTitleRequest  $request
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\JobTitle  $jobtitle
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateJobTitleRequest $request, JobTitle $jobTitle)
+    public function update(UpdateJobTitleRequest $request, JobTitle $jobtitle)
     {
         $validated = $request->validated();
-        $jobTitle->fill($validated);
-        $jobTitle->save();
-        return redirect()->route('jobTitle.show', $jobTitle);
+        $jobtitle->fill($validated);
+        $jobtitle->save();
+        return redirect()->route('jobTitle.show', $jobtitle);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JobTitle  $jobTitle
+     * @param  \App\Models\JobTitle  $jobtitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobTitle $jobTitle)
+    public function destroy(JobTitle $jobtitle)
     {
         if (!empty(Auth::user())) {
-            $jobTitle->delete();
+            $jobtitle->delete();
             return redirect()->route('jobTitle.index');
         } else {
             return redirect()->route('jobTitle.index');

@@ -7,6 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreDepartmentRequest extends FormRequest
 {
     /**
+     * Остановить валидацию после первой неуспешной проверки.
+     *
+     * @var bool
+     */
+    protected $stopOnFirstFailure = true;
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -24,21 +31,8 @@ class StoreDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['string', 'max:120', 'unique:departments'],
-            'description' => ['string', 'max:1000'],
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'title.required' => 'A title is required',
-            'description.required' => 'A description is required',
+            'title' => ['required', 'string', 'max:120', 'unique:departments'],
+            'description' => ['required', 'string', 'max:1000'],
         ];
     }
 }

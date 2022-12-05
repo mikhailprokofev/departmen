@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Http\Resources\DepartmentResource;
 
-use Illuminate\Support\Facades\Log;
-
 class DepartmentController extends Controller
 {
     /**
@@ -60,8 +58,6 @@ class DepartmentController extends Controller
     {
         $validated = $request->validated();
         $department->fill($validated);
-        Log::info($department);
-        Log::info(json_decode($request));
         $department->save();
         return redirect()->route('department.show', $department);
     }
