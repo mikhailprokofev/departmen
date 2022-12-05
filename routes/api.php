@@ -25,12 +25,16 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 
-Route::resource('department', DepartmentController::class, ['only' => [
-    'index', 'show', 'store', 'update', 'destroy'
-]]);
-Route::resource('jobtitle', JobTitleController::class, ['only' => [
-    'index', 'show', 'store', 'update', 'destroy'
-]]);
-Route::resource('employee', EmployeeController::class, ['only' => [
-    'index', 'show', 'store', 'update', 'destroy'
-]]);
+Route::middleware(['prettyjson'])->group(function () {
+
+    Route::resource('department', DepartmentController::class, ['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
+    Route::resource('jobtitle', JobTitleController::class, ['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
+    Route::resource('employee', EmployeeController::class, ['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
+
+});
