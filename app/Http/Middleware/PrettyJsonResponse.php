@@ -26,7 +26,11 @@ class PrettyJsonResponse
     {
         $response = $next($request);
         
-        $response->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $response->setEncodingOptions(
+            JSON_PRETTY_PRINT |
+            JSON_UNESCAPED_UNICODE |
+            JSON_UNESCAPED_SLASHES
+        );
         
         return $response;
     }
